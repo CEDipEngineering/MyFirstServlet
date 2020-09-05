@@ -1,40 +1,34 @@
 package br.edu.insper;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.ParseException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class SubscriptionForm
- */
 @WebServlet("/SubscriptionForm")
+
 public class SubscriptionForm extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L; 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-    /**
-     * Default constructor. 
-     */
-    public SubscriptionForm() {
-        // TODO Auto-generated constructor stub
-    }
+ String nome = request.getParameter("nome");
+ String email = request.getParameter("email");
+ String curso = request.getParameter("curso");
+ 
+ PrintWriter out = response.getWriter();
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
+ out.println("<html>");
+ out.println("<body>");
+ out.println("Nome: " + nome );
+ out.println("<br>");
+ out.println("Email Insper: " + email );
+ out.println("<br>");
+ out.println("Curso: " + curso );
+ out.println("</body>");
+ out.println("</html>");
+ }
 }
